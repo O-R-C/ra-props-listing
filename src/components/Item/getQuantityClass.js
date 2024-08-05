@@ -1,4 +1,4 @@
-export const getQuantityClasses = (quantity) => {
+export const getQuantityClass = (quantity) => {
   if (quantity <= 10) {
     return 'level-low'
   }
@@ -10,4 +10,4 @@ export const getQuantityClasses = (quantity) => {
   return 'level-high'
 }
 
-export default getQuantityClasses
+export default getQuantityClass

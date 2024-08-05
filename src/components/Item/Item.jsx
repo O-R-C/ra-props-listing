@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
-import getQuantityClasses from './getQuantityClasses'
+import getQuantityClass from './getQuantityClass'
+import getFormattedDescription from './getFormattedDescription'
 import styles from './Item.module.css'
 
 const Item = ({ item }) => {
@@ -14,16 +15,25 @@ const Item = ({ item }) => {
         </a>
       </div>
       <div className={styles['item-details']}>
-        <p className={styles['item-title']}>{item.title}</p>
-        <p className={styles['item-price']}>{item.price}</p>
-        <p className={`${styles['item-quantity']} ${styles[getQuantityClasses(item.quantity)]}`}>{item.quantity}</p>
+        <p className={styles['item-title']}>{getFormattedDescription(item.title)}</p>
+        <p className={`${styles['item-price']} ${styles[item.currency_code]}`}>{item.price}</p>
+        <p className={`${styles['item-quantity']} ${styles[getQuantityClass(item.quantity)]}`}>{item.quantity}</p>
       </div>
     </div>
   )
 }
 
 Item.propTypes = {
-  item: PropTypes.object,
+  item: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    currency_code: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    MainImage: PropTypes.shape({
+      url_570xN: PropTypes.string.isRequired,
+    }),
+  }),
 }
 
 export default Item

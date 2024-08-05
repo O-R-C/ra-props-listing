@@ -66,3 +66,21 @@
 .level-high {
   background-color: #3c763d;
 }
+
+/* Currency */
+
+.USD::before {
+  content: '$';
+}
+
+.EUR::before {
+  content: '€';
+}
+
+.GBP::after {
+  content: ' GBP';
+}
+
+.CAD::after {
+  content: ' CAD';
+}
